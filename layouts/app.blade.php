@@ -23,18 +23,18 @@
         alt="User Avatar"
       />
 
-      <!-- Dropdown Menu -->
+      <!-- Dropdown Menu (Enlarged) -->
       <div
         x-show="open"
         @click.away="open = false"
         x-transition
-        class="absolute right-0 mt-2 w-40 bg-white border rounded-lg shadow-md z-50"
+        class="absolute right-0 mt-2 w-56 bg-white border rounded-xl shadow-lg z-50"
       >
-        <a href="/dashboard" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Dashboard</a>
-        <a href="/profile" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Profile</a>
+        <a href="/dashboard" class="block px-5 py-3 text-base text-gray-700 hover:bg-gray-100">Dashboard</a>
+        <a href="/profile" class="block px-5 py-3 text-base text-gray-700 hover:bg-gray-100">Profile</a>
         <form method="POST" action="/logout">
           @csrf
-          <button type="submit" class="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+          <button type="submit" class="w-full text-left px-5 py-3 text-base text-gray-700 hover:bg-gray-100">
             Logout
           </button>
         </form>
@@ -42,16 +42,16 @@
     </div>
   </header>
 
-  <!-- Wrapper (no gap between sidebar + navbar) -->
+  <!-- Wrapper (Sidebar + Content) -->
   <div class="pt-16 flex flex-col md:flex-row min-h-screen">
 
     <!-- Sidebar -->
-    <aside class="bg-blue-200 w-full md:w-64 md:p-0 md:border-r">
-      <div class="px-4 py-4 md:px-0">
+    <aside class="bg-blue-200 w-full md:w-64 md:p-0 md:border-r md:sticky md:top-16 md:h-[calc(100vh-4rem)]">
+      <div class="px-4 py-4 md:px-0 overflow-y-auto md:h-full">
         @yield('sidebar')
       </div>
     </aside>
-
+        
     <!-- Main Content -->
     <main class="flex-1 px-4 md:px-6 py-6 overflow-y-auto">
       <div class="max-w-screen-xl mx-auto">

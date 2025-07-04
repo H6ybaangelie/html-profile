@@ -92,10 +92,21 @@
         <label class="block font-medium">Gender</label>
         <select class="w-full p-3 rounded bg-gray-100 outline-none text-gray-700">
           <option disabled selected>Select Gender</option>
-          <option value="Laki-laki">Laki-laki</option>
-          <option value="Perempuan">Perempuan</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
         </select>
       </div>
+    </div>
+
+    <!-- Change Password Button -->
+    <div class="flex justify-end mt-2">
+      <button
+        type="button"
+        onclick="document.getElementById('passwordModal').classList.remove('hidden')"
+        class="text-sm text-blue-600 hover:underline"
+      >
+        Change Password
+      </button>
     </div>
 
     <!-- Submit -->
@@ -107,7 +118,42 @@
   </form>
 </div>
 
-<!-- JS Preview -->
+<!-- Modal Change Password -->
+<div id="passwordModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 hidden">
+  <div class="bg-white rounded-xl shadow-lg w-full max-w-2xl p-8 md:p-10">
+    <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center">Change Password</h3>
+
+    <div class="mb-5">
+      <label class="block text-sm font-semibold mb-1">Current Password</label>
+      <input type="password" class="w-full mt-1 border rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-400 focus:outline-none" placeholder="Enter your current password">
+    </div>
+
+    <div class="mb-5">
+      <label class="block text-sm font-semibold mb-1">New Password</label>
+      <input type="password" class="w-full mt-1 border rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-400 focus:outline-none" placeholder="Enter new password">
+    </div>
+
+    <div class="mb-8">
+      <label class="block text-sm font-semibold mb-1">Confirm New Password</label>
+      <input type="password" class="w-full mt-1 border rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-400 focus:outline-none" placeholder="Confirm new password">
+    </div>
+
+    <div class="flex justify-end gap-4">
+      <button
+        type="button"
+        onclick="document.getElementById('passwordModal').classList.add('hidden')"
+        class="px-5 py-2 text-sm border border-gray-400 rounded-lg text-gray-700 hover:bg-gray-100 transition"
+      >
+        Cancel
+      </button>
+      <button type="submit" class="px-5 py-2 text-sm bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition">
+        Update Password
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- JS Avatar Preview -->
 <script>
   const input = document.getElementById('avatarInput');
   const preview = document.getElementById('avatarPreview');

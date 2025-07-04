@@ -8,7 +8,6 @@
 @endphp
 
 <div x-data="{ open: false }" class="space-y-2 md:space-y-4">
-
   <!-- Dropdown (Mobile) -->
   <div class="md:hidden">
     <button @click="open = !open" class="w-full px-4 py-3 bg-white rounded-md shadow flex justify-between items-center">
@@ -17,7 +16,6 @@
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
       </svg>
     </button>
-
     <div x-show="open" class="mt-2 space-y-2" x-cloak>
       <div class="{{ $sidebarItemClass }}">
         <img src="https://www.svgrepo.com/show/507370/profile-circled.svg" class="w-5 h-5" />
@@ -56,8 +54,6 @@
 @section('content')
 <!-- Form Card -->
 <div class="w-full md:w-[90%] max-w-screen-md mx-auto bg-white p-6 md:p-8 rounded-xl shadow space-y-6 mt-3">
-
-  <!-- Title -->
   <h2 class="text-xl md:text-2xl font-bold text-gray-800 text-center">Edit Profile</h2>
 
   <!-- Avatar -->
@@ -80,30 +76,25 @@
       <input type="email" value="callof404@gmail.com" class="w-full p-3 rounded bg-gray-100 outline-none" />
     </div>
     <div class="flex flex-col md:flex-row gap-4">
-    <div class="flex-1">
-      <label class="block font-medium">Website or Linkedln</label>
-      <input type="url" placeholder="https://yourwebsite.com or LinkedIn" class="w-full p-3 rounded bg-gray-100 outline-none" />
-    </div>
-    <div class="flex-1">
+      <div class="flex-1">
+        <label class="block font-medium">Website or Linkedln</label>
+        <input type="url" placeholder="https://yourwebsite.com or LinkedIn" class="w-full p-3 rounded bg-gray-100 outline-none" />
+      </div>
+      <div class="flex-1">
         <label class="block font-medium">Headline</label>
-        <select class="w-full p-3 rounded bg-gray-100 outline-none text-gray-700">
-          <option disabled selected>Select Headline</option>
-          <option>Senior Front-End Developer</option>
-          <option>Full-Stack Web Instructor</option>
-          <option>Data Science Mentor</option>
-          <option>Mobile Developer & Trainer</option>
-          <option>Digital Marketing Coach</option>
-          <option>UI/UX Designer</option>
-          <option>Backend Engineer</option>
-          <option>AI & ML Specialist</option>
-          <option>Cybersecurity Expert</option>
-          <option>Cloud Computing Instructor</option>
-        </select>
+        <input type="text" placeholder="" class="w-full p-3 rounded bg-gray-100 outline-none" />
       </div>
     </div>
     <div>
       <label class="block font-medium">Bio</label>
       <textarea rows="5" placeholder="Write a short bio..." class="w-full p-3 rounded bg-gray-100 outline-none resize-none"></textarea>
+    </div>
+
+    <!-- Ganti Password Button -->
+    <div class="flex justify-end mt-2">
+      <button type="button" onclick="document.getElementById('passwordModal').classList.remove('hidden')" class="text-sm text-blue-600 hover:underline">
+        Ganti Password
+      </button>
     </div>
 
     <!-- Submit -->
@@ -115,7 +106,38 @@
   </form>
 </div>
 
-<!-- JS Preview -->
+<!-- Modal Change Password -->
+<div id="passwordModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 hidden">
+  <div class="bg-white rounded-xl shadow-lg w-full max-w-2xl p-8 md:p-10">
+    <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center">Change Password</h3>
+
+    <div class="mb-5">
+      <label class="block text-sm font-semibold mb-1">Current Password</label>
+      <input type="password" class="w-full mt-1 border rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-400 focus:outline-none" placeholder="Enter your current password">
+    </div>
+
+    <div class="mb-5">
+      <label class="block text-sm font-semibold mb-1">New Password</label>
+      <input type="password" class="w-full mt-1 border rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-400 focus:outline-none" placeholder="Enter new password">
+    </div>
+
+    <div class="mb-8">
+      <label class="block text-sm font-semibold mb-1">Confirm New Password</label>
+      <input type="password" class="w-full mt-1 border rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-400 focus:outline-none" placeholder="Confirm new password">
+    </div>
+
+    <div class="flex justify-end gap-4">
+      <button type="button" onclick="document.getElementById('passwordModal').classList.add('hidden')" class="px-5 py-2 text-sm border border-gray-400 rounded-lg text-gray-700 hover:bg-gray-100 transition">
+        Cancel
+      </button>
+      <button type="submit" class="px-5 py-2 text-sm bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition">
+        Update Password
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- JS Avatar Preview -->
 <script>
   const input = document.getElementById('avatarInput');
   const preview = document.getElementById('avatarPreview');
